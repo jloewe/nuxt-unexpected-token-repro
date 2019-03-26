@@ -1,0 +1,23 @@
+// Import Vuetify styling
+@require '~vuetify/src/stylus/app.styl'
+
+.v-card-group {
+  .v-card:first-child {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .v-card:not(:first-child):not(:last-child) {
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .v-card:last-child {
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

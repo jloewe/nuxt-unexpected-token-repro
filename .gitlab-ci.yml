@@ -1,0 +1,31 @@
+stages:
+  - build
+  - release
+
+nuxt:
+  stage: build
+  image: node
+  cache:
+    paths:
+      - "$HOME/.npm"
+  before_script:
+    - npm ci
+  script:
+    - npx nuxt generate
+  artifacts:
+    paths:
+      - dist/
+
+release:
+  stage: release
+  image: node
+  cache:
+    paths:
+      - "$HOME/.npm"
+  before_script:
+    - npm ci
+  only:
+    - master
+  script:
+    - tar -zcf dist.tar.gz dist
+    - npx semantic-release
